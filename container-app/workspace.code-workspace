@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../header-app"
+	},
+	{
+		"path": "../body-footer-app"
+	}
+],
+  "settings": {}
+}
