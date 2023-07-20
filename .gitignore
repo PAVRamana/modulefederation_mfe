@@ -1,5 +1,6 @@
 # dependencies
 /container-app/node_modules
 /header-app/node_modules
-/body-footer-app/node_modules
+/body-app/node_modules
+/footer-app/node_modules
 

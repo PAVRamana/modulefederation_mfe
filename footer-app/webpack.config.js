@@ -1,12 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const path = require("path");
 const { dependencies } = require("./package.json");
 
 module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
-    port: 3000,
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    port: 5004,
   },
   module: {
     rules: [
@@ -34,11 +38,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "Host",
-      remotes: {
-        RemoteA: `RemoteA@http://localhost:4000/moduleEntry.js`,
-        RemoteB: `RemoteB@http://localhost:5002/moduleEntry.js`,
-        RemoteC: `RemoteC@http://localhost:5004/moduleEntry.js`,
+      name: "RemoteC",
+      filename: "moduleEntry.js",
+      exposes: {
+        "./App": "./src/App",
       },
       shared: {
         ...dependencies,
